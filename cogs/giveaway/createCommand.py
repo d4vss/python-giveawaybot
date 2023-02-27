@@ -9,20 +9,20 @@ class CreateCommand(commands.Cog):
     def __init__(self, client):
         self.client = client
 
-    # async def parseTimeLong(self, time_string):
-    #     time_dict = {
-    #         'second': 1,
-    #         'minute': 60,
-    #         'hour': 3600,
-    #         'day': 86400,
-    #         'week': 604800,
-    #         'month': 2592000,
-    #         'year': 31536000
-    #     }
-    #     if time_string[-1] == 's':
-    #         time_string = time_string[:-1]
-    #     value, unit = time_string.split()
-    #     return int(value) * time_dict[unit]
+    async def parseTimeLong(self, time_string):
+        time_dict = {
+            'second': 1,
+            'minute': 60,
+            'hour': 3600,
+            'day': 86400,
+            'week': 604800,
+            'month': 2592000,
+            'year': 31536000
+        }
+        if time_string[-1] == 's':
+            time_string = time_string[:-1]
+        value, unit = time_string.split()
+        return int(value) * time_dict[unit]
 
     @commands.slash_command(description="Starts a giveaway (interactive).")
     @has_permissions(administrator=True)
